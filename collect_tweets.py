@@ -3,6 +3,7 @@ import logging
 import configs
 import pymongo
 
+
 # FORMAT LOGGING
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
 
@@ -43,7 +44,7 @@ def get_tweets_by_tag(api, hashtag, max_tweets):
     raw_tweets_short = [{'created_at': raw_tw['created_at'], \
                          'hashtag': hashtag, \
                          'user': raw_tw['user']['screen_name'], \
-                        #  'user': raw_tw['user']['id'], \
+                        #  'user_id': raw_tw['user']['id'], \
                          'user_followers': raw_tw['user']['followers_count'], \
                          'lang': raw_tw['lang'], \
                          'message': raw_tw['full_text']} \
