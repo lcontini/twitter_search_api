@@ -51,7 +51,7 @@ def count_tweets_by_hour(db_connection, mongo_col_tweets, mongo_col_hour):
     hour_col = db_connection[mongo_col_hour]
 
     dates_list = tweets_col.distinct("created_at")
-    formatted_hour = format_date_field(dates_list)
+    formatted_hour = sorted(format_date_field(dates_list))
     counter = Counter(formatted_hour)
     ret = {}
     counted_by_hour = []
