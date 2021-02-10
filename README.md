@@ -7,6 +7,7 @@ Este projeto destina-se a utilizar as APIs do Twitter para buscar os ultimos 100
 3. O total de postagens para cada uma das hashtags por idioma/país do usuário que postou :x:
 
 Para inicialização rapida do projeto, executar o [quick-start](#quick-start)
+<br>
 
 -----
 
@@ -20,12 +21,12 @@ A stack consiste das seguintes tecnologias:
     - [Elasticsearch](https://www.elastic.co/pt/elasticsearch/) 
     - [Fluentd](https://www.fluentd.org/)
     - [Kibana](https://www.elastic.co/pt/kibana)
-
+<br>
 
 
 -----
 ## <a name=quick-start></a>Quick Start
-
+<br>
 
 #### Requisitos:
 
@@ -37,9 +38,10 @@ Caso queira executar os scripts Python localmente:
 - [Python](https://www.python.org/) 3.6.12+
 - [PyPi (pip)](https://pypi.org/project/pip/) 21.0.1+
 - Demais requisitos no arquivo [requirements.txt](twitter_api/requirements.txt)
-
+<br>
 
 #### Setup:
+<br>
 
 ##### 1. Definir as variáveis de ambiente necessárias.
 
@@ -50,13 +52,14 @@ export CONSUMER_SECRET=<your-consumer-secret>
 export ACCESS_TOKEN=<your-access-token>
 export ACCESS_TOKEN_SECRET=<your-access-token-secret>
 ```
-
+<br>
 Para execução local dos scripts python, exportar também as seguintes variáveis, com as informações de acesso ao mongodb:
 ```
 export MONGO_SERVER='mongodb://mongo:27017'
 export MONGO_USER=root
 export MONGO_PWD=mypass
 ```
+<br>
 
 ##### 2. (Opcional) Realizar o build da imagem docker.
 
@@ -65,6 +68,7 @@ OBS: A imagem está versionada repositorio `ocontini/twitter_api` no [dockerhub]
 ```
 cd `git rev-parse --show-toplevel`/twitter_api && docker build -f ../deploy/Dockerfile -t ocontini/twitter_api .
 ```
+<br>
 
 ##### 3. Realizar o start da stack.
 
@@ -73,18 +77,19 @@ docker-compose -f `git rev-parse --show-toplevel`/deploy/docker-compose.yml up -
 ```
 
 - Neste momento, os serviços serão inicializados e em alguns segundos as APIs estarão prontas para receber acessos. Para instruções, ver [Acessando via Postman](#acess-apis)
-
+<br>
 
 ##### 4. Para realizar o stop da stack
 
 ```
 docker-compose -f `git rev-parse --show-toplevel`/deploy/docker-compose.yml down
 ```
+<br>
 
 -----
 
 ## <a name=about-apis></a>Sobre as APIs
-
+<br>
 ##### 1. Informações das APIs
 
 Todas as rotas são acessadas pela URL local http://localhost:8081
@@ -97,9 +102,16 @@ Todas as rotas são acessadas pela URL local http://localhost:8081
 | /api/reload-tweets     	|    `POST`   	|              `201`             	|              `503`             	| Carrega uma lista atualizada dos tweets e os salva no banco de dados.                   	|
 | /metrics               	|    `GET`    	|              `200`             	|              `404`             	| Retorna metricas de uso das APIs, exportadas pela lib [prometheus-flask-exporter](https://pypi.org/project/prometheus-flask-exporter/)       	|
 
+<br>
 ##### 2. <a name=access-apis></a>Acessando via Postman
 
 Importar a collection [Twitter-Search-API](./Twitter-Search-API.postman_colection.json) contida neste repositorio.
 
 OBS: para instruções de como importar uma collection, ver esta [Documentação](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman).
 
+-----
+
+## <a name=about-apis></a>Monitoramento
+<br>
+##### Dashboard Grafana
+![Dashboard Grafana](https://user-images.githubusercontent.com/15928493/107487972-84464a00-6b65-11eb-9412-f2ba866b30f0.png)
