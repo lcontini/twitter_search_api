@@ -7,13 +7,27 @@
 	"item": [
 		{
 			"name": "api-metrics",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8081/metrics",
+					"raw": "http://{{host}}:8081/metrics",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
 					"port": "8081",
 					"path": [
@@ -25,13 +39,27 @@
 		},
 		{
 			"name": "get-tweets-from-db",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8081/api/tweets",
+					"raw": "http://{{host}}:8081/api/tweets",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
 					"port": "8081",
 					"path": [
@@ -44,13 +72,27 @@
 		},
 		{
 			"name": "get-rank-by-followers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8081/api/rank-by-followers",
+					"raw": "http://{{host}}:8081/api/rank-by-followers",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
 					"port": "8081",
 					"path": [
@@ -63,13 +105,27 @@
 		},
 		{
 			"name": "get-tweets-per-hour-of-day",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8081/api/tweets-per-hour",
+					"raw": "http://{{host}}:8081/api/tweets-per-hour",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
 					"port": "8081",
 					"path": [
@@ -82,13 +138,27 @@
 		},
 		{
 			"name": "reload-tweets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "localhost:8081/api/reload-tweets",
+					"raw": "http://{{host}}:8081/api/reload-tweets",
+					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
 					"port": "8081",
 					"path": [
@@ -98,6 +168,32 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost"
 		}
 	]
 }
