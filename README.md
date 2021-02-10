@@ -19,7 +19,7 @@ A stack consiste das seguintes tecnologias:
 - Monitoramento: [Prometheus](https://prometheus.io/)
 - Logs: [Stack EFK](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-elasticsearch-fluentd-and-kibana-efk-logging-stack-on-kubernetes-pt)
     - [Elasticsearch](https://www.elastic.co/pt/elasticsearch/) 
-    - [Fluentd](https://www.fluentd.org/)
+    - [Filebeat](https://www.elastic.co/pt/beats/filebeat)
     - [Kibana](https://www.elastic.co/pt/kibana)
 <br>
 
@@ -46,6 +46,7 @@ Caso queira executar os scripts Python localmente:
 ##### 1. Definir as variáveis de ambiente necessárias.
 
 Exportar as credenciais para suas respectivas variáveis (substitua os comandos abaixo com suas chaves)
+
 ```
 export CONSUMER_KEY=<your-consumer-key>
 export CONSUMER_SECRET=<your-consumer-secret>
@@ -53,7 +54,9 @@ export ACCESS_TOKEN=<your-access-token>
 export ACCESS_TOKEN_SECRET=<your-access-token-secret>
 ```
 <br>
+
 Para execução local dos scripts python, exportar também as seguintes variáveis, com as informações de acesso ao mongodb:
+
 ```
 export MONGO_SERVER='mongodb://mongo:27017'
 export MONGO_USER=root
@@ -77,7 +80,7 @@ cd `git rev-parse --show-toplevel`/twitter_api && docker build -f ../deploy/Dock
 docker-compose -f `git rev-parse --show-toplevel`/deploy/docker-compose.yml up -d
 ```
 
-- Neste momento, os serviços serão inicializados e em alguns segundos as APIs estarão prontas para receber acessos. Para instruções, ver [Acessando via Postman](#acess-apis)
+- Neste momento, os serviços serão inicializados e em alguns segundos as APIs estarão prontas para receber acessos. Para instruções, ver [Acessando via Postman](#access-apis)
 <br>
 
 ##### 4. Criar os indices do Kibana no elastic search
@@ -98,6 +101,7 @@ docker-compose -f `git rev-parse --show-toplevel`/deploy/docker-compose.yml down
 
 ## <a name=about-apis></a>Sobre as APIs
 <br>
+
 ##### 1. Informações das APIs
 
 Todas as rotas são acessadas pela URL local http://localhost:8081
@@ -113,7 +117,7 @@ Todas as rotas são acessadas pela URL local http://localhost:8081
 <br>
 ##### 2. <a name=access-apis></a>Acessando via Postman
 
-Importar a collection [Twitter-Search-API](./Twitter-Search-API.postman_colection.json) contida neste repositorio.
+Importar a collection [Twitter-Search-API](https://github.com/lcontini/twitter_search_api/Twitter-Search-API.postman_colection.json) contida neste repositorio.
 
 OBS: para instruções de como importar uma collection, ver esta [Documentação](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman).
 
@@ -121,11 +125,15 @@ OBS: para instruções de como importar uma collection, ver esta [Documentação
 
 ## <a name=about-apis></a>Monitoramento
 <br>
+
 ##### Dashboard Grafana
+
 ![Dashboard Grafana](https://user-images.githubusercontent.com/15928493/107487972-84464a00-6b65-11eb-9412-f2ba866b30f0.png)
 <br>
 
 ## <a name=about-apis></a>Logs
 <br>
+
 ##### View Kibana
+
 ![Kibana View](https://user-images.githubusercontent.com/15928493/107518496-d4390700-6b8d-11eb-8eb3-68271f5afb72.png)
