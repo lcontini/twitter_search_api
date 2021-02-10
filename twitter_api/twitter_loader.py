@@ -9,7 +9,7 @@ logging.basicConfig(format='%(asctime)s --- %(levelname)s --- %(message)s', leve
 
 
 def main():
-    # collect_tweets.main()
+    collect_tweets.main()
     rank_users.main()
     count_tweets_by_hour.main()
 

@@ -54,7 +54,6 @@ app = Flask(__name__)
 
 # PROMETHEUS METRICS
 metrics = PrometheusMetrics(app)
-metrics.info("app_info", "App Info, this can be anything you want", version="1.0.0")
 
 
 @app.route('/api/tweets', methods=['GET'])
@@ -105,4 +104,4 @@ if __name__ == '__main__':
     loader_status = run_twitter_loader()
     if loader_status is False:
         exit('Twitter Loader Failed!')
-    app.run(host = '0.0.0.0', debug=False) # debug mode has to be disabled in order for prometheus-metrics to work
+    app.run(host = '0.0.0.0', port=8081, debug=False) # debug mode has to be disabled in order for prometheus-metrics to work
