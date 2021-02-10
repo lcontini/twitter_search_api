@@ -117,7 +117,7 @@ Todas as rotas são acessadas pela URL local http://localhost:8081
 <br>
 ##### 2. <a name=access-apis></a>Acessando via Postman
 
-Importar a collection [Twitter-Search-API](https://github.com/lcontini/twitter_search_api/Twitter-Search-API.postman_colection.json) contida neste repositorio.
+Importar a collection Twitter-Search-API.postman_colection.json, contida na raiz deste repositorio.
 
 OBS: para instruções de como importar uma collection, ver esta [Documentação](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman).
 
