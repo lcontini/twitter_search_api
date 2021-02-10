@@ -30,8 +30,10 @@ services:
       - 8081:8081
     links:
       - mongo
+      - filebeat
     depends_on:
       - mongo
+      - filebeat
     networks:
       - twnet
 
@@ -65,6 +67,41 @@ services:
       - ../monitoring/config.monitoring
     networks:
       - twnet
+
+  elasticsearch:
+    image: "docker.elastic.co/elasticsearch/elasticsearch:7.2.0"
+    container_name: elasticsearch
+    environment:
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - "discovery.type=single-node"
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    networks:
+      - twnet
+
+  kibana:
+    image: "docker.elastic.co/kibana/kibana:7.2.0"
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    networks:
+      - twnet
+
+  filebeat:
+    image: "docker.elastic.co/beats/filebeat:7.2.0"
+    container_name: filebeat
+    user: root
+    volumes:
+      - ../log-stack/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - twnet
+
+volumes:
+  elasticsearch_data:
 
 networks:
   twnet:

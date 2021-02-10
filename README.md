@@ -62,13 +62,14 @@ export MONGO_PWD=mypass
 <br>
 
 ##### 2. (Opcional) Realizar o build da imagem docker.
+<br>
+
 
 OBS: A imagem está versionada repositorio `ocontini/twitter_api` no [dockerhub](https://hub.docker.com)
 
 ```
 cd `git rev-parse --show-toplevel`/twitter_api && docker build -f ../deploy/Dockerfile -t ocontini/twitter_api .
 ```
-<br>
 
 ##### 3. Realizar o start da stack.
 
@@ -79,7 +80,14 @@ docker-compose -f `git rev-parse --show-toplevel`/deploy/docker-compose.yml up -
 - Neste momento, os serviços serão inicializados e em alguns segundos as APIs estarão prontas para receber acessos. Para instruções, ver [Acessando via Postman](#acess-apis)
 <br>
 
-##### 4. Para realizar o stop da stack
+##### 4. Criar os indices do Kibana no elastic search
+
+```
+sh `git rev-parse --show-toplevel`/log-stack/create_index.sh
+```
+<br>
+
+##### 5. Para realizar o stop da stack
 
 ```
 docker-compose -f `git rev-parse --show-toplevel`/deploy/docker-compose.yml down
@@ -115,3 +123,9 @@ OBS: para instruções de como importar uma collection, ver esta [Documentação
 <br>
 ##### Dashboard Grafana
 ![Dashboard Grafana](https://user-images.githubusercontent.com/15928493/107487972-84464a00-6b65-11eb-9412-f2ba866b30f0.png)
+<br>
+
+## <a name=about-apis></a>Logs
+<br>
+##### View Kibana
+![Kibana View](https://user-images.githubusercontent.com/15928493/107518496-d4390700-6b8d-11eb-8eb3-68271f5afb72.png)
