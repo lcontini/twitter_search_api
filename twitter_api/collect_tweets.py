@@ -8,41 +8,15 @@ import pymongo
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 
-# TWEETS PARAMS
+# TWITTER PARAMS
 MAX_TWEETS = configs.MAX_TWEETS
 HASHTAGS_LIST = configs.HASHTAGS_LIST
 
-# AUTH PARAMS - TWITTER
-# CONSUMER_KEY = configs.CONSUMER_KEY
-# CONSUMER_SECRET = configs.CONSUMER_SECRET
-# ACCESS_TOKEN = configs.ACCESS_TOKEN
-# ACCESS_TOKEN_SECRET = configs.ACCESS_TOKEN_SECRET
-
-# AUTH PARAMS - MONGODB
-# MONGO_SERVER = configs.MONGO_SERVER
-# MONGO_USER = configs.MONGO_USER
-# MONGO_PWD = configs.MONGO_PWD
-# MONGO_DB = configs.MONGO_DB
+# MONGODB PARAMS
 MONGO_COL_TWEETS = configs.MONGO_COL_TWEETS
 
 
 # FUNCTION DEFINITIONS
-
-
-# def twitter_auth(consumer_key, consumer_secret, access_token, access_token_secret):
-#     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-#     auth.set_access_token(access_token, access_token_secret)
-
-#     api = tweepy.API(auth, wait_on_rate_limit=True)
-
-#     return (api)
-
-
-# def mongodb_connect(mongo_server, mongo_user, mongo_pwd, mongo_db):
-#     myclient = pymongo.MongoClient(mongo_server, username=mongo_user, password=mongo_pwd)
-#     mydb = myclient[mongo_db]
-
-#     return (mydb)
 
 
 def get_tweets_by_tag(api, hashtag, max_tweets):
@@ -68,14 +42,6 @@ def get_tweets_all_tags(api, hashtags_list, max_tweets):
         tweet_list_all_tags.extend(tweet_list_by_tag)
 
     return (tweet_list_all_tags)
-
-
-# def cleanup_tweet_list(db_connection, mongo_col):
-#     mycol = db_connection[mongo_col]
-
-#     x = mycol.delete_many({})
-
-#     return(x.deleted_count)
 
 
 def insert_tweet_list(tweet_list, db_connection, mongo_col):

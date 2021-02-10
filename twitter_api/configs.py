@@ -1,6 +1,10 @@
+from dotenv import load_dotenv
 import os
 import tweepy
 import pymongo
+
+# LOAD .env VARS
+load_dotenv(verbose=True)
 
 # Twitter Auth
 CONSUMER_KEY = os.environ['CONSUMER_KEY']
