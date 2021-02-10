@@ -43,6 +43,9 @@ Caso queira executar os scripts Python localmente:
 #### Setup:
 <br>
 
+##### :warning: Caso `git rev-parse --show-toplevel` não seja um comando valido para o seu sistema operacional, considere nos comandos abaixo o diretório raiz deste projeto git.
+<br>
+
 ##### 1. Definir as variáveis de ambiente necessárias.
 
 Exportar as credenciais para suas respectivas variáveis (substitua os comandos abaixo com suas chaves)
