@@ -20,9 +20,9 @@ HASHTAGS_LIST = ['#openbanking', '#remediation', '#devops', '#sre', '#microservi
 RANK_LENGTH = 5
 
 # Mongo Auth
-MONGO_SERVER = 'mongodb://mongo:27017'
-MONGO_USER = 'root'
-MONGO_PWD = 'mypass'
+MONGO_SERVER = os.environ['MONGO_SERVER']
+MONGO_USER = os.environ['MONGO_USER']
+MONGO_PWD = os.environ['MONGO_PWD']
 MONGO_DB = 'case_twitter'
 MONGO_COL_TWEETS = 'tweets'
 MONGO_COL_RANK = 'most_followers_rank'

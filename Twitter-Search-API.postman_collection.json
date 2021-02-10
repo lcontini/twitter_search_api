@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "7312baa3-b476-442e-834a-8593c5e1ed2b",
+		"name": "Twitter-Search-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api-metrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/metrics",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-tweets-from-db",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/tweets",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"tweets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-rank-by-followers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/rank-by-followers",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"rank-by-followers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-tweets-per-hour-of-day",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/tweets-per-hour",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"tweets-per-hour"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reload-tweets",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/reload-tweets",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"reload-tweets"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -6,8 +6,6 @@ services:
     image: mongo
     container_name: mongo
     restart: always
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "27017:27017"
     environment:
@@ -15,22 +13,58 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: mypass
     networks:
       - twnet
-  
-  # mongo-express:
-  #   image: mongo-express
-  #   container_name: mongo-express
-  #   restart: always
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #   ports:
-  #     - 8081:8081
-  #   environment:
-  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
-  #     ME_CONFIG_MONGODB_ADMINPASSWORD: mypass
-  #   links:
-  #     - mongo
-  #   depends_on:
-  #     - mongo
+
+  twitter_api:
+    image: ocontini/twitter_api
+    container_name: twitter_api
+    restart: unless-stopped
+    environment:
+      MONGO_SERVER: mongodb://mongo:27017
+      MONGO_USER: root
+      MONGO_PWD: mypass
+      CONSUMER_KEY: ${CONSUMER_KEY}
+      CONSUMER_SECRET: ${CONSUMER_SECRET}
+      ACCESS_TOKEN: ${ACCESS_TOKEN}
+      ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET}
+    ports:
+      - 8081:8081
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    networks:
+      - twnet
+
+  prometheus:
+    image: prom/prometheus:latest
+    restart: unless-stopped
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ../monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - twnet
+
+  grafana:
+    image: grafana/grafana:latest
+    restart: unless-stopped
+    user: "472"
+    container_name: grafana
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - ../monitoring/grafana-datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+      - ../monitoring/twitter_flask_api_dashboard.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml
+      - ../monitoring/twitter_flask_api.json:/var/lib/grafana/dashboards/twitter_flask_api.json
+    env_file:
+      - ../monitoring/config.monitoring
+    networks:
+      - twnet
 
 networks:
   twnet:
