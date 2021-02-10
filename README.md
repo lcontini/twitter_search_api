@@ -17,7 +17,7 @@ A stack consiste das seguintes tecnologias:
 - Lib API Twitter: [Tweepy](https://www.tweepy.org/)
 - Framework APIs: [Flask](https://palletsprojects.com/p/flask/)
 - Monitoramento: [Prometheus](https://prometheus.io/)
-- Logs: [Stack EFK](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-elasticsearch-fluentd-and-kibana-efk-logging-stack-on-kubernetes-pt)
+- Logs: 
     - [Elasticsearch](https://www.elastic.co/pt/elasticsearch/) 
     - [Filebeat](https://www.elastic.co/pt/beats/filebeat)
     - [Kibana](https://www.elastic.co/pt/kibana)
