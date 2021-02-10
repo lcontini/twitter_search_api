@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import os
 import tweepy
 import pymongo
+import logging
 
 # LOAD .env VARS
 load_dotenv(verbose=True)
@@ -42,7 +43,7 @@ def twitter_auth():
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
-    api = tweepy.API(auth, timeout=10, wait_on_rate_limit_notify=True, wait_on_rate_limit=True)
+    api = tweepy.API(auth, timeout=40, wait_on_rate_limit_notify=True, wait_on_rate_limit=True)
 
     return (api)
 
@@ -53,6 +54,19 @@ def mongodb_connect():
 
     return (mydb)
 
+
+
+## LOGGING FUNCTIONS
+
+def logging_basic_config():
+    logging.basicConfig(level="INFO")
+    logging.info("Creating handler")
+    root = logging.getLogger()
+    hdlr = root.handlers[0]
+    json_format = logging.Formatter('{"time": "%(asctime)s", "level": "%(levelname)s", "message": "%(message)s"}')
+    hdlr.setFormatter(json_format)
+
+    return logging.info('Global function logging_basic_config completed successfully')
 
 ## MONGO FUNCTIONS
 

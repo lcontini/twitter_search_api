@@ -2,9 +2,6 @@ import logging
 import configs
 import pymongo
 
-# FORMAT LOGGING
-logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
-
 
 # MOST FOLLOWERS RANK PARAMKS
 RANK_LENGTH = configs.RANK_LENGTH
@@ -67,4 +64,5 @@ def main():
 
 
 if __name__ == "__main__":
+    configs.logging_basic_config()
     main()

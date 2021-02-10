@@ -6,10 +6,6 @@ import pymongo
 import json
 
 
-# FORMAT LOGGING
-logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
-
-
 # TWITTER PARAMS
 HASHTAGS_LIST = configs.HASHTAGS_LIST
 
@@ -100,4 +96,5 @@ def insert_user_locale_info(api, db_connection, mongo_col_user, user_locale_list
 
 
 # if __name__ == "__main__":
+#     configs.logging_basic_config()
 #     main()

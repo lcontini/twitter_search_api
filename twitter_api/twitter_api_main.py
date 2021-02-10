@@ -6,8 +6,6 @@ import time
 from flask import Flask, request
 from prometheus_flask_exporter import PrometheusMetrics
 
-logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
-logging.info("Setting LOGLEVEL to INFO")
 
 # AUTH PARAMS - MONGODB
 MONGO_SERVER = configs.MONGO_SERVER
@@ -101,6 +99,7 @@ def reload_tweets():
 
 
 if __name__ == '__main__':
+    configs.logging_basic_config()
     loader_status = run_twitter_loader()
     if loader_status is False:
         exit('Twitter Loader Failed!')

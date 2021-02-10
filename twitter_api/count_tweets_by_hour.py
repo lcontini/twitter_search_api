@@ -5,9 +5,6 @@ import json
 from datetime import datetime as dt
 from collections import Counter
 
-# FORMAT LOGGING
-logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
-
 
 # AUTH PARAMS - MONGODB
 # MONGO_SERVER = configs.MONGO_SERVER
@@ -86,4 +83,5 @@ def main():
 
 
 if __name__ == "__main__":
+    configs.logging_basic_config()
     main()

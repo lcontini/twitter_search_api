@@ -1,11 +1,9 @@
 import collect_tweets
 import rank_users
 import count_tweets_by_hour
+import configs
 import logging
 import time
-
-# Logging config
-logging.basicConfig(format='%(asctime)s --- %(levelname)s --- %(message)s', level=logging.INFO)
 
 
 def main():
@@ -15,6 +13,7 @@ def main():
 
 
 if __name__ == "__main__":
+    configs.logging_basic_config()
     logging.info("Start loading tweets")
     start_time = time.time()
     main()

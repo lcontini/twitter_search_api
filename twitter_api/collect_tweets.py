@@ -4,10 +4,6 @@ import configs
 import pymongo
 
 
-# FORMAT LOGGING
-logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
-
-
 # TWITTER PARAMS
 MAX_TWEETS = configs.MAX_TWEETS
 HASHTAGS_LIST = configs.HASHTAGS_LIST
@@ -73,4 +69,5 @@ def main():
 
 
 if __name__ == "__main__":
+    configs.logging_basic_config()
     main()
